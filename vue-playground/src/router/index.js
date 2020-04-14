@@ -9,17 +9,18 @@ Vue.use(VueRouter);
 
 const routes = [
   {
-    path: "/list",
+    path: "/",
     name: "event-list",
     component: EventList
   },
   {
-    path: "/show",
+    path: "/event/:id",
     name: "event-show",
-    component: EventShow
+    component: EventShow,
+    props: true
   },
   {
-    path: "/create",
+    path: "/event/create",
     name: "event-create",
     component: EventCreate
   },
@@ -41,6 +42,7 @@ const routes = [
 ];
 
 const router = new VueRouter({
+  // allows to change url without reloading the page
   mode: "history",
   base: process.env.BASE_URL,
   routes

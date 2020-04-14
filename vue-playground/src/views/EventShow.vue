@@ -1,5 +1,11 @@
 <template>
   <div>
-    Event Show
+    Showing event #{{ id }}
   </div>
 </template>
+
+<script>
+export default {
+  props: ['id']
+}
+</script>
