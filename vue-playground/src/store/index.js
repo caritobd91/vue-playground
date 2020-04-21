@@ -18,5 +18,11 @@ export default new Vuex.Store({
   },
   mutations: {},
   actions: {},
+  getters: {
+    // by creating this getter, it allows you to use catLength anywhere in the application
+    catLength: state => {
+      return state.categories.length;
+    }
+  },
   modules: {}
 });

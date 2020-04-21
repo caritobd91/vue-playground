@@ -2,6 +2,7 @@
   <div>
     <h1>Create an event, {{ user.name }}</h1>
     <p>This event was created by {{ user.id }}</p>
+    <p>There are {{ catLength }} categories</p>
     <ul>
       <li v-for="cat in categories" :key="cat">
         {{ cat }}
@@ -16,18 +17,18 @@ import { mapState } from "vuex";
 
 export default {
   // NOTE: using spread operator ...mapState({}) allows you to add local computed properties
-  // computed: {
-  //   localComputed() {
-  //     return something
-  //   },
-  //   ...mapState(["user", "categories"])
-  // }
+  computed: {
+    catLength() {
+      return this.$store.getters.catLength;
+    },
+    ...mapState(["user", "categories"])
+  }
 
   // NOTE: cleaner way to use mapState, this way it needs to use dot notation in the markup, instead of computed function name
-  computed: mapState({
-    user: "user",
-    categories: "categories"
-  })
+  // computed: mapState({
+  //   user: "user",
+  //   categories: "categories"
+  // })
 
   // NOTE: Using mapState to access the store data
   // computed: mapState({
