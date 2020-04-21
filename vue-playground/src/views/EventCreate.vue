@@ -3,7 +3,7 @@
     <h1>Create an event, {{ user.name }}</h1>
     <p>This event was created by {{ user.id }}</p>
     <p>There are {{ catLength }} categories</p>
-    <p>{{ getEvent(1) }}</p>
+    <p>{{ getEventById(2) }}</p>
     <ul>
       <li v-for="cat in categories" :key="cat">
         {{ cat }}
@@ -14,7 +14,7 @@
 
 <script>
 // mapState allows you to map the state into computed
-import { mapState } from "vuex";
+import { mapState, mapGetters } from "vuex";
 
 export default {
   // NOTE: using spread operator ...mapState({}) allows you to add local computed properties
@@ -22,9 +22,10 @@ export default {
     catLength() {
       return this.$store.getters.catLength;
     },
-    getEvent() {
-      return this.$store.getters.getEventById;
-    },
+    // getEvent() {
+    //   return this.$store.getters.getEventById;
+    // },
+    ...mapGetters(["getEventById"]),
     ...mapState(["user", "categories"])
   }
 
